@@ -54,7 +54,7 @@ function ProfileHome() {
       const data = await res.json();
 
       if (res.ok) {
-        navigate({ to: '/success' });
+        navigate({ to: '/success', search: { email } });
       } else {
         console.error('Phone verification failed:', data);
       } 
