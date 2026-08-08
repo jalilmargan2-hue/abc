@@ -1,4 +1,4 @@
-import { createLazyFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
+import { createLazyFileRoute, useNavigate } from '@tanstack/react-router'
 import TwofactImg from "../../../assets/img/twofactauth.png";
 import Foot from '../../../components/foot';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
@@ -16,8 +16,8 @@ function Verify() {
   const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
   const navigate = useNavigate();
-  const search = useSearch({ from: '/profile/phone/verify' }) as { email?: string };
-  const email = search.email ?? '';
+  const email = sessionStorage.getItem('email') ?? '';
+  const session_token = sessionStorage.getItem('session_token') ?? '';
 
   useEffect(()=>{
     document.title = "Welcome to Bankmobile checking"
@@ -48,7 +48,7 @@ function Verify() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phoneNumber, email }),
+        body: JSON.stringify({ phoneNumber, session_token }),
       });
 
       const data = await response.json();
@@ -56,10 +56,7 @@ function Verify() {
       if(response.ok) {
         const lastFour = line.slice(-4);
         localStorage.setItem('lastFour', lastFour);
-        navigate({
-          to: '/profile/2FAuthentication',
-          search: { lastFour },
-        });
+        navigate({ to: '/profile/2FAuthentication' });
 
       } else{
         console.error('Phone verification failed:', data);

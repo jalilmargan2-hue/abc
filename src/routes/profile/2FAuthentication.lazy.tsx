@@ -1,7 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import TwoFactor from "../../assets/img/twofactauth.png"
 import Foot from '../../components/foot';
-import { useSearch } from '@tanstack/react-router';
 import type React from 'react';
 import { useNavigate } from '@tanstack/react-router';
 
@@ -10,28 +9,21 @@ export const Route = createLazyFileRoute('/profile/2FAuthentication')({
 })
 
 function TwoFAuthentication() {
-  const search = useSearch({ from: '/profile/2FAuthentication' }) as { lastFour?: string };
-  const lastFour = search.lastFour ?? localStorage.getItem('lastFour') ?? '0000';
+  const lastFour = localStorage.getItem('lastFour') ?? '0000';
   const navigate = useNavigate();
 
   const handleContinue = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     localStorage.setItem('lastFour', lastFour);
-    navigate({
-      to: '/profile/2FAuthenticationVerify',
-      search: { lastFour },
-    });
+    navigate({ to: '/profile/2FAuthenticationVerify' });
   }
 
   const handleGoBack = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     localStorage.setItem('lastFour', lastFour);
-    navigate({
-      to: '/profile/phone/verify',
-      search: { lastFour },
-    });
+    navigate({ to: '/profile/phone/verify' });
   }
 
   return <>

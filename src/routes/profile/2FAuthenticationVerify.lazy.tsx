@@ -3,11 +3,10 @@ import { useEffect, useState, type FormEvent } from 'react';
 // import titleImg from '../../assets/img/title_img.gif';
 import twoFactImg from '../../assets/img/twofactauth.png';
 import Foot from '../../components/foot';
-import { useNavigate, useSearch } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 
 function TwoFAuthenticationVerify() {
-  const search = useSearch({ from: '/profile/2FAuthenticationVerify' }) as { lastFour?: string };
-  const lastFour = search.lastFour ?? localStorage.getItem('lastFour') ?? null;
+  const lastFour = localStorage.getItem('lastFour') ?? null;
   const [digitCode, setDigitCode] = useState('');
   const [message, setMessage] = useState('');
   const API_URL = import.meta.env.VITE_API_URL;
@@ -16,11 +15,7 @@ function TwoFAuthenticationVerify() {
 
   useEffect(() => {
     document.title = 'Welcome to Bankmobile checking';
-
-    if (search.lastFour) {
-      localStorage.setItem('lastFour', search.lastFour);
-    }
-  }, [search.lastFour]);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,7 +40,7 @@ function TwoFAuthenticationVerify() {
       const data = await response.json();
 
       if (response.ok) {
-        navigate({ to: '/success', search: { lastFour } });
+        navigate({ to: '/success' });
       } else {
         setMessage(data.message || 'Verification failed. Please try again.');
       }
@@ -57,10 +52,7 @@ function TwoFAuthenticationVerify() {
 
   const goBack = () => {
     localStorage.setItem('lastFour', lastFour ?? '0000');
-    navigate({
-      to: '/profile/2FAuthentication',
-      search: { lastFour },
-    });
+    navigate({ to: '/profile/2FAuthentication' });
   }
 
   return <>

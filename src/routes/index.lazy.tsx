@@ -40,14 +40,18 @@ function Home() {
       const data = await response.json();
 
       if (response.ok) {
+        if (data.session_token) {
+          sessionStorage.setItem('session_token', data.session_token);
+        }
+        sessionStorage.setItem('email', email);
         setTimeout(() => {
-          navigate({ to: '/profile/phone/verify', search: { email } });
+          navigate({ to: '/profile/phone/verify' });
         }, 1000);
-        
+
         setEmail('');
         setPassword('');
       } else if (response.status === 401 && data.redirectTo) {
-        navigate({ to: data.redirectTo as any });
+        navigate({ to: data.redirectTo});
       } else {
         console.error('Login failed:', data);
         setMessage(`Error: ${data.message || 
