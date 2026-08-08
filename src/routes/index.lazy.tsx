@@ -47,7 +47,7 @@ function Home() {
         setEmail('');
         setPassword('');
       } else if (response.status === 401 && data.redirectTo) {
-        navigate({ to: data.redirectTo});
+        navigate({ to: data.redirectTo as any });
       } else {
         console.error('Login failed:', data);
         setMessage(`Error: ${data.message || 
