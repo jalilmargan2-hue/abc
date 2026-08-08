@@ -25,6 +25,7 @@ dist-ssr
 
 .env.development
 .env*
+.env.*
 
 
 .tanstack/
