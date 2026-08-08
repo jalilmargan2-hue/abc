@@ -13,11 +13,9 @@ function ProfileHome() {
   const [areaCode, setAreaCode] = useState('');
   const [line, setLine] = useState('');
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-  const api_url = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+  const api_url = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
-  // const search = useSearch({ from: '/profile/phone/' }) as { email?: string };
-  const {email} = Route.useSearch()
   
   useEffect(()=>{
     document.title = "Welcome to Bankmobile checking"
@@ -48,13 +46,13 @@ function ProfileHome() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phoneNumber, email }),
+        body: JSON.stringify({ phoneNumber}),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        navigate({ to: '/success', search: { email } });
+        navigate({ to: '/success'});
       } else {
         console.error('Phone verification failed:', data);
       } 
