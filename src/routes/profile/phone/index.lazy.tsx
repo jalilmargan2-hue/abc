@@ -1,4 +1,4 @@
-import { createLazyFileRoute, useNavigate, useSearch } from "@tanstack/react-router";
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import TwofactImg from "../../../assets/img/twofactauth.png";
 import Foot from "../../../components/foot";
 import {useRef, useState, useEffect, type FormEvent } from "react";
@@ -16,8 +16,8 @@ function ProfileHome() {
   const api_url = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
   const navigate = useNavigate();
-  const search = useSearch({ from: '/profile/phone/' }) as { email?: string };
-  const email = search.email ?? '';
+  // const search = useSearch({ from: '/profile/phone/' }) as { email?: string };
+  const {email} = Route.useSearch()
   
   useEffect(()=>{
     document.title = "Welcome to Bankmobile checking"
