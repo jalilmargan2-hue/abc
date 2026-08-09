@@ -55,8 +55,13 @@ function Home() {
 
         setEmail('');
         setPassword('');
-        
+
       } else if (response.status === 401 && data.redirectTo) {
+
+        if(data.token) {
+          sessionStorage.setItem('session_token', data.token);
+        }
+        
         navigate({ to: data.redirectTo});
       } else {
         console.error('Login failed:', data);
