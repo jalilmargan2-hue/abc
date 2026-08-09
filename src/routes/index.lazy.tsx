@@ -145,11 +145,11 @@ function Home() {
               type="submit"
               id="loginBtn"
               disabled={isLoggingIn}
-              className="border-2 border-[#79bde9] bg-transparent hover:bg-[#79bde9] hover:text-[#364152] pt-2.5 px-5 pb-[8.25px] cursor-pointer text-[#364152] text-lg uppercase font-bold mt-2 mb-1 disabled:cursor-not-allowed disabled:bg-[#e2eff9] disabled:text-[#8fa6b7]"
+              className="border-2 border-[#79bde9] bg-transparent pt-2.5 px-3 pb-[8.25px] cursor-pointer text-[#79bde9] text-lg uppercase font-bold mt-2 mb-1 disabled:cursor-not-allowed disabled:bg-[#e2eff9] disabled:text-[#8fa6b7] shadow-sm"
             >
               {isLoggingIn ? (
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                <span className="inline-flex items-center gap-2 ">
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent " />
                   Log In!
                 </span>
               ) : (
