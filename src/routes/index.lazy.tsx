@@ -112,7 +112,7 @@ function Home() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Ex: janedoe@yahoo.com"
                 required
-                className="p-2 text-[#999] h-8 w-54 max-md:w-full border-b-2 border-[#79bde9] focus:border focus:border-[#79bde9] outline-none"
+                className="p-2 text-black h-8 w-54 max-md:w-full border-b-2 border-[#79bde9] focus:border focus:border-[#79bde9] outline-none"
               />
 
               <div className="text-xs text-red-500 mt-4">{message}</div>
@@ -130,13 +130,8 @@ function Home() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="(case sensitive)"
                 required
-                className="p-2 text-[#999] h-8 w-54 max-md:w-full border-b-2 border-[#79bde9] focus:border focus:border-[#79bde9] outline-none"
+                className="p-2 text-black h-8 w-54 max-md:w-full border-b-2 border-[#79bde9] focus:border focus:border-[#79bde9] outline-none"
               />
-              {/* <div className="flex items-center justify-end">
-                <a href="#" className="text-xs font-light border-b mt-3">
-                  Forgot Login Information?
-                </a>
-              </div> */}
             </div>
           </div>
 
