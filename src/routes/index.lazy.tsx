@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
-import bmLogo from '../assets/img/bm-tech-logo.png';
+import Logo from '../assets/img/bm-tech-logo.png';
 import getStartedImg from '../assets/img/button_getstarted.png';
 import heroImg from '../assets/img/index_page_banner.jpg';
 import Foot from '../components/foot';
@@ -80,8 +80,8 @@ function Home() {
         <div>
           <a href="/">
             <img
-              src={bmLogo}
-              alt="bmLogo"
+              src={Logo}
+              alt="Logo"
               className="w-80 max-md:w-56.25 h-auto cursor-pointer"
             />
           </a>
@@ -163,14 +163,11 @@ function Home() {
         </form>
       </div>
 
-      <div className="w-full overflow-hidden max-md:overflow-none max-md:w-fit h-auto">
-        <a href="/">
-          <img
-            src={heroImg}
-            alt="heroImg"
-            className="w-full h-full object-cover object-top"
-          />
-        </a>
+      <div
+        className="w-full overflow-hidden max-md:max-h-100 max-md:overflow-none h-screen bg-cover bg-center max-md:bg-none"
+        style={{ backgroundImage: `url(${heroImg})` }}
+      >
+        <a href="/" />
       </div>
 
       <Foot />
