@@ -16,10 +16,11 @@ function Verify() {
   const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
   const navigate = useNavigate();
+
   const session_token = sessionStorage.getItem('session_token') ?? '';
 
   useEffect(()=>{
-    document.title = "Welcome to Bankmobile checking "
+    document.title = "Welcome to Bankmobile checking"
   }, []);
 
   const handleDigitInput = (
