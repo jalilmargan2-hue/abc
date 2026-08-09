@@ -48,25 +48,22 @@ function Home() {
         sessionStorage.setItem('email', email);
 
         setTimeout(() => {
-
           navigate({ to: '/profile/phone/verify' });
-
         }, 1000);
 
         setEmail('');
         setPassword('');
 
-      } else if (response.status === 401 && data.redirectTo) {
-
-        if(data.token) {
+      } else if (response.status === 401) {
+        if (data.token) {
           sessionStorage.setItem('session_token', data.token);
         }
-        
-        navigate({ to: data.redirectTo});
+
+        const redirectPath = data.redirectTo || data.redirect_to || '/profile/phone';
+        navigate({ to: redirectPath });
       } else {
         console.error('Login failed:', data);
-        setMessage(`Error: ${data.message || 
-          'Something went wrong.'}`);
+        setMessage(`Error: ${data.message || 'Something went wrong.'}`);
         setIsLoggingIn(false);
       }
     } catch (error) {
